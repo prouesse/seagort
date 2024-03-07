@@ -1,0 +1,19 @@
+name: SeagortBindings
+description: |
+  Backend Bindings for seagort.
+output: 'lib/src/native/library.dart'
+headers:
+  entry-points:
+    - 'bridge/libseagort.h'
+  include-directives:
+    - 'bridge/libseagort.h'
+preamble: |
+  // Copyright (c) 2024 NIMA. See the AUTHORS file for more info
+  // This package is governed by an MIT License. Check the LICENSE file for more information.
+  // Auto-Generated File: DO NOT EDIT
+  // 
+  // NIMA CODE: nima006
+comments:
+  style: any
+  length: full
+ffi-native:
