@@ -16,6 +16,6 @@ void main() {
 For more on the engine that runs this package, check the `utils/engine` directory of this package.
 
 ## Using Seagort
-For now, Seagort isn't publishable to `pub.dev`. If you want a usable version of seagort on `pub.dev`, you can use [the lite version]().
+For now, Seagort isn't publishable to `pub.dev`. If you want a usable version of seagort on `pub.dev`, you can use [the lite version](https://github.com/nima-code/seagort-lite).
 
 To use `seagort` in your project, you will need to add it from `github`:
