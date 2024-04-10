@@ -22,7 +22,7 @@ jobs:
         run: cbindgen --config cbindgen.toml --lang c --output libseagort.h
         working-directory: utils\engine
       - name: Copy files
-        run: copy target\release\libseagort.dll ..\..\bridge\windows\
+        run: copy target\release\seagort.dll ..\..\bridge\windows\
         working-directory: utils\engine
       - uses: actions/upload-artifact@master
         with:
@@ -41,7 +41,7 @@ jobs:
         run: cbindgen --config cbindgen.toml --lang c --output libseagort.h
         working-directory: utils/engine
       - name: Copy files
-        run: cp target/release/libseagort.dylib ../../bridge/macos-arm/
+        run: cp target/release/libseagort.dylib ../../bridge/mac-arm/
         working-directory: utils/engine
       - uses: actions/upload-artifact@master
         with:
