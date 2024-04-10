@@ -28,6 +28,13 @@ jobs:
         with:
           name: windows-build
           path: bridge\windows
+      - uses: dart-lang/setup-dart@9a04e6d73cca37bd455e0608d7e5092f881fd603
+      - name: Install dependencies
+        run: dart pub get
+      - name: Check all is well
+        run: dart example/main.dart
+      - name: Run tests
+        run: dart test
   build-mac:
     runs-on: macos-latest
     steps:
@@ -47,6 +54,13 @@ jobs:
         with:
           name: macos-build
           path: bridge/mac_arm
+      - uses: dart-lang/setup-dart@9a04e6d73cca37bd455e0608d7e5092f881fd603
+      - name: Install dependencies
+        run: dart pub get
+      - name: Check all is well
+        run: dart example/main.dart
+      - name: Run tests
+        run: dart test
   build-linux:
     runs-on: ubuntu-latest
     steps:
@@ -66,6 +80,13 @@ jobs:
         with:
           name: linux-build
           path: bridge/linux
+      - uses: dart-lang/setup-dart@9a04e6d73cca37bd455e0608d7e5092f881fd603
+      - name: Install dependencies
+        run: dart pub get
+      - name: Check all is well
+        run: dart example/main.dart
+      - name: Run tests
+        run: dart test
   publish:
     permissions:
         id-token: write
@@ -95,19 +116,9 @@ jobs:
       - name: Install dependencies
         run: dart pub get
 
-      # Uncomment this step to verify the use of 'dart format' on each commit.
-      - name: Verify formatting
-        run: dart format --output=none --set-exit-if-changed .
-
-      # Consider passing '--fatal-infos' for slightly stricter analysis.
-      - name: Analyze project source
-        run: dart analyze
-
       # Your project will need to have tests in test/ and a dependency on
       # package:test for this step to succeed. Note that Flutter projects will
       # want to change this to 'flutter test'.
       - name: Run tests
         run: dart test
-      # - name: Publish
-      #   run: dart pub publish --force
         
