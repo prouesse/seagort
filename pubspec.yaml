@@ -1,6 +1,6 @@
 name: seagort
 description: Run JavaScript on the backend/vm with Seagort.
-version: 0.1.0-pre
+version: 0.0.1-pre
 repository: https://github.com/nima-code/seagort
 
 executables:
