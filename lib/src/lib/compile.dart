@@ -14,6 +14,6 @@ Future<String> _compileJSAsync(String data) async {
   return Future.value(_compileJS(data));
 }
 
-String compileJavaSript(String js) => _compileJS(js); 
+String compileJavaSript(String js) => _compileJS(js);
 
 Future<String> compileJavaScriptAsync(String js) async => _compileJSAsync(js);

@@ -7,7 +7,9 @@ import 'utilities/system.dart';
 DynamicLibrary readLibrary() {
   String libraryPath;
   if (Platform.isWindows) {
-    libraryPath = Uri.file(p.join('bridge', 'windows', 'seagort.dll'), windows: true).path;
+    libraryPath =
+        Uri.file(p.join('bridge', 'windows', 'seagort.dll'), windows: true)
+            .path;
   } else if (Platform.isLinux) {
     libraryPath = p.join('bridge', 'linux', 'libseagort.so');
   } else if (Platform.isMacOS) {
@@ -21,4 +23,3 @@ DynamicLibrary readLibrary() {
   }
   return DynamicLibrary.open(libraryPath);
 }
-
