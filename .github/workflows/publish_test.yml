@@ -1,0 +1,47 @@
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+name: Dart
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - name: Setup Go environment
+        uses: actions/setup-go@v5.0.0
+      - name: Create Build Files
+        run: go build -o ../../bridge/windows/libseagort.dll -buildmode=c-shared main.go
+        working-directory: utils/engine
+      - uses: actions/upload-artifact@master
+        with:
+          name: windows-build
+          path: bridge/windows
+  build-mac:
+    runs-on: macos-latest
+    steps:
+      - name: Setup Go environment
+        uses: actions/setup-go@v5.0.0
+      - name: Create Build Files
+        run: go build -o ../../bridge/mac_arm/libseagort.dylib -buildmode=c-shared main.go
+        working-directory: utils/engine
+      - uses: actions/upload-artifact@master
+        with:
+          name: macos-build
+          path: bridge/mac_arm
+  build-linux:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Go environment
+        uses: actions/setup-go@v5.0.0
+      - name: Create Build Files
+        run: go build -o ../../bridge/linux/libseagort.so -buildmode=c-shared main.go
+        working-directory: utils/engine
+      - uses: actions/upload-artifact@master
+        with:
+          name: linux-build
+          path: bridge/linux
