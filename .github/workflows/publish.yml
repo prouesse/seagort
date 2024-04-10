@@ -3,10 +3,13 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: Seagort Test Run
+name: Seagort Publish Run
 
 on:
-  workflow_dispatch:
+  push:
+    tags:
+    - 'v[0-9]+.[0-9]+.[0-9]+*'
+    - 'v[0-9]+.[0-9]+.[0-9]+-\w+*'
 
 jobs:
   build-windows:
@@ -108,6 +111,6 @@ jobs:
       # want to change this to 'flutter test'.
       - name: Run tests
         run: dart test
-      # - name: Publish
-      #   run: dart pub publish --force
+      - name: Publish
+        run: dart pub publish --force
         
