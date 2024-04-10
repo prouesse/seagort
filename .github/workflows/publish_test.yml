@@ -41,7 +41,7 @@ jobs:
         run: cbindgen --config cbindgen.toml --lang c --output libseagort.h
         working-directory: utils/engine
       - name: Copy files
-        run: copy target/release/libseagort.dylib ../../bridge/macos-arm/
+        run: cp target/release/libseagort.dylib ../../bridge/macos-arm/
         working-directory: utils/engine
       - uses: actions/upload-artifact@master
         with:
@@ -60,7 +60,7 @@ jobs:
         run: cbindgen --config cbindgen.toml --lang c --output libseagort.h
         working-directory: utils/engine
       - name: Copy files
-        run: copy target/release/libseagort.so ../../bridge/linux/
+        run: cp target/release/libseagort.so ../../bridge/linux/
         working-directory: utils/engine
       - uses: actions/upload-artifact@master
         with:
