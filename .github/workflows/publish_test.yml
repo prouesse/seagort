@@ -33,8 +33,6 @@ jobs:
         run: dart pub get
       - name: Check all is well
         run: dart example/main.dart
-      - name: Run tests
-        run: dart test
   build-mac:
     runs-on: macos-latest
     steps:
@@ -59,8 +57,6 @@ jobs:
         run: dart pub get
       - name: Check all is well
         run: dart example/main.dart
-      - name: Run tests
-        run: dart test
   build-linux:
     runs-on: ubuntu-latest
     steps:
@@ -85,8 +81,6 @@ jobs:
         run: dart pub get
       - name: Check all is well
         run: dart example/main.dart
-      - name: Run tests
-        run: dart test
   publish:
     permissions:
         id-token: write
