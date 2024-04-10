@@ -13,23 +13,35 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Setup Go environment
-        uses: actions/setup-go@v5.0.0
+      - name: Get Dependencies
+        run: cargo install --force cbindgen
       - name: Create Build Files
-        run: go build -o ../../bridge/windows/libseagort.dll -buildmode=c-shared main.go
-        working-directory: utils/engine
+        run: cargo build --release 
+        working-directory: utils\engine
+      - name: Create Header File
+        run: cbindgen --config cbindgen.toml --lang c --output libseagort.h
+        working-directory: utils\engine
+      - name: Copy files
+        run: copy target\release\libseagort.dll ..\..\bridge\windows\
+        working-directory: utils\engine
       - uses: actions/upload-artifact@master
         with:
           name: windows-build
-          path: bridge/windows
+          path: bridge\windows
   build-mac:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Setup Go environment
-        uses: actions/setup-go@v5.0.0
+      - name: Get Dependencies
+        run: cargo install --force cbindgen
       - name: Create Build Files
-        run: go build -o ../../bridge/mac_arm/libseagort.dylib -buildmode=c-shared main.go
+        run: cargo build --release 
+        working-directory: utils/engine
+      - name: Create Header File
+        run: cbindgen --config cbindgen.toml --lang c --output libseagort.h
+        working-directory: utils/engine
+      - name: Copy files
+        run: copy target/release/libseagort.dylib ../../bridge/macos-arm/
         working-directory: utils/engine
       - uses: actions/upload-artifact@master
         with:
@@ -39,10 +51,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Setup Go environment
-        uses: actions/setup-go@v5.0.0
+      - name: Get Dependencies
+        run: cargo install --force cbindgen
       - name: Create Build Files
-        run: go build -o ../../bridge/linux/libseagort.so -buildmode=c-shared main.go
+        run: cargo build --release 
+        working-directory: utils/engine
+      - name: Create Header File
+        run: cbindgen --config cbindgen.toml --lang c --output libseagort.h
+        working-directory: utils/engine
+      - name: Copy files
+        run: copy target/release/libseagort.so ../../bridge/linux/
         working-directory: utils/engine
       - uses: actions/upload-artifact@master
         with:
