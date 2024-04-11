@@ -51,7 +51,7 @@ jobs:
       - uses: actions/upload-artifact@master
         with:
           name: macos-build
-          path: bridge/mac_arm
+          path: bridge/mac-arm
       - uses: dart-lang/setup-dart@9a04e6d73cca37bd455e0608d7e5092f881fd603
       - name: Install dependencies
         run: dart pub get
@@ -94,7 +94,7 @@ jobs:
       - uses: actions/download-artifact@master
         with:
           name: macos-build
-          path: bridge/mac_arm
+          path: bridge/mac-arm
       - uses: actions/download-artifact@master
         with:
           name: linux-build

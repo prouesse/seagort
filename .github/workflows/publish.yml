@@ -31,11 +31,6 @@ jobs:
         with:
           name: windows-build
           path: bridge\windows
-      - uses: dart-lang/setup-dart@9a04e6d73cca37bd455e0608d7e5092f881fd603
-      - name: Install dependencies
-        run: dart pub get
-      - name: Check all is well
-        run: dart example/main.dart
   build-mac:
     runs-on: macos-latest
     steps:
@@ -54,12 +49,7 @@ jobs:
       - uses: actions/upload-artifact@master
         with:
           name: macos-build
-          path: bridge/mac_arm
-      - uses: dart-lang/setup-dart@9a04e6d73cca37bd455e0608d7e5092f881fd603
-      - name: Install dependencies
-        run: dart pub get
-      - name: Check all is well
-        run: dart example/main.dart
+          path: bridge/mac-arm
   build-linux:
     runs-on: ubuntu-latest
     steps:
@@ -79,11 +69,6 @@ jobs:
         with:
           name: linux-build
           path: bridge/linux
-      - uses: dart-lang/setup-dart@9a04e6d73cca37bd455e0608d7e5092f881fd603
-      - name: Install dependencies
-        run: dart pub get
-      - name: Check all is well
-        run: dart example/main.dart
   publish:
     permissions:
         id-token: write
@@ -97,7 +82,7 @@ jobs:
       - uses: actions/download-artifact@master
         with:
           name: macos-build
-          path: bridge/mac_arm
+          path: bridge/mac-arm
       - uses: actions/download-artifact@master
         with:
           name: linux-build
