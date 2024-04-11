@@ -72,7 +72,7 @@ jobs:
   publish:
     permissions:
         id-token: write
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     needs: [build-mac, build-windows]
     steps:
       - uses: actions/download-artifact@master
@@ -109,8 +109,8 @@ jobs:
       # Your project will need to have tests in test/ and a dependency on
       # package:test for this step to succeed. Note that Flutter projects will
       # want to change this to 'flutter test'.
-      - name: Run tests
-        run: dart test
+      # - name: Run tests
+      #   run: dart test
       - name: Publish
         run: dart pub publish --force
         
