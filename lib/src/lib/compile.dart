@@ -4,7 +4,7 @@ import '../native/library.dart';
 import '../source.dart';
 
 String _compileJS(String data) {
-  final _ = readLibrary();
+  // final _ = readLibrary();
   final nativeData = data.toNativeUtf8().cast<Char>();
   final result = compile_js(nativeData);
   return result.cast<Utf8>().toDartString();

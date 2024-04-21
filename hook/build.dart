@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:native_assets_cli/native_assets_cli.dart';
 
 const assetName = 'libseagort.so';
-final packageAssetPath = Uri.file('bridge/linux/$assetName');
+final packageAssetPath = Uri.file('utils/engine/target/release/$assetName');
 
 void main(List<String> args) async {
   await build(args, (config, output) async {
