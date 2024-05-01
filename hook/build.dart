@@ -23,7 +23,7 @@ void main(List<String> args) async {
     output.addAsset(
       NativeCodeAsset(
         package: packageName, 
-        name: assetName, 
+        name: 'src/native/library.dart', 
         file: assetPath,
         linkMode: DynamicLoadingBundled(), 
         os: config.targetOS,
